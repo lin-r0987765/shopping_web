@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-TW" style="scroll-behavior:smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專業採購平台 | Premium Sourcing Platform</title>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="global-progress"></div>
+    <!-- Premium Preloader -->
+    <div id="premium-preloader">
+        <div class="preloader-content">
+            <span class="preloader-brand">PREMIUM SOURCING</span>
+            <div class="preloader-bar-wrap">
+                <div class="preloader-bar"></div>
+            </div>
+            <span class="preloader-text">載入系統中...</span>
+        </div>
+    </div>
+
+    <!-- Page Transition Overlay -->
+    <div id="page-transition" class="page-transition">
+        <div class="transition-brand">PREMIUM SOURCING</div>
+    </div>
+
+    <div class="announcement-bar">
+        <span>🚀 限時優惠：首單企業採購享 10% 折扣！ <strong onclick="navigate('register')">立即註冊</strong></span>
+    </div>
+    <div id="scroll-progress"></div>
+    <nav>
+        <a class="nav-brand" href="#products">採購平台</a>
+        <div class="hamburger" id="hamburger-btn" onclick="toggleMobileMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="nav-links">
+            <button class="nav-link" onclick="navigate('products')">所有商品</button>
+            <button class="nav-link" onclick="openCartDrawer()">🛒 採購車 <span id="cart-count" class="cart-badge">0</span></button>
+            <div id="nav-auth" style="display: flex;">
+                <button class="nav-link" onclick="navigate('login')">登入</button>
+                <button class="nav-link" onclick="navigate('register')">註冊</button>
+            </div>
+            <div id="nav-user" style="display: none;">
+                <button class="nav-link" onclick="navigate('dashboard')">我的訂單</button>
+                <button id="nav-admin-btn" class="nav-link" style="display: none;" onclick="navigate('admin')">管理後台</button>
+                <button class="nav-link" onclick="logout()">登出</button>
+            </div>
+        </div>
+    </nav>
+    <div id="nav-backdrop" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.1); z-index:900;" onclick="closeMobileMenu()"></div>
+
+    <main id="main-content">
+        <!-- Products Page -->
+        <section id="page-products" class="page active">
+            <div class="hero" data-reveal>
+                <span class="hero-eyebrow">PREMIUM SOURCING</span>
+                <h1 class="hero-title">升級您的採購體驗</h1>
+                <p class="hero-subtitle">探索高品質的 <span id="typewriter-text" class="typewriter-highlight"></span>，助力您的企業效率。</p>
+                <div class="hero-cta-group">
+                    <div class="btn-magnetic-wrap">
+                        <button class="btn btn-primary" onclick="document.getElementById('search-input').focus()">開始探索</button>
+                    </div>
+                    <div class="btn-magnetic-wrap">
+                        <button class="btn btn-outline" onclick="navigate('register')">建立帳號</button>
+                    </div>
+                </div>
+                <div class="hero-features">
+                    <div class="hero-feature"><div class="hero-feature-icon">🛡️</div> 全球品質保證</div>
+                    <div class="hero-feature"><div class="hero-feature-icon">⚡</div> 快速物流配送</div>
+                    <div class="hero-feature"><div class="hero-feature-icon">💎</div> 會員專屬折扣</div>
+                </div>
+                <div class="hero-stats-card">
+                    <div class="hero-stat">
+                        <div class="hero-stat-label">成交總額</div>
+                        <div class="hero-stat-value" data-hero-count="500" data-suffix="M+">0</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-label">活躍企業</div>
+                        <div class="hero-stat-value" data-hero-count="12000" data-suffix="+">0</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-label">滿意度</div>
+                        <div class="hero-stat-value" data-hero-count="99.8" data-suffix="%" data-decimal="1">0</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="marquee-container" data-reveal>
+                <div class="marquee-content">
+                    <span class="marquee-item">SONY</span><span class="marquee-item">PANASONIC</span><span class="marquee-item">SAMSUNG</span><span class="marquee-item">BOSCH</span><span class="marquee-item">DELL</span><span class="marquee-item">LGE</span><span class="marquee-item">FOXCONN</span><span class="marquee-item">TSMC</span>
+                    <span class="marquee-item">SONY</span><span class="marquee-item">PANASONIC</span><span class="marquee-item">SAMSUNG</span><span class="marquee-item">BOSCH</span><span class="marquee-item">DELL</span><span class="marquee-item">LGE</span><span class="marquee-item">FOXCONN</span><span class="marquee-item">TSMC</span>
+                </div>
+            </div>
+
+
+            <!-- Why Choose Us Features Grid -->
+            <section class="features-section" data-reveal>
+                <div class="features-header">
+                    <span class="features-eyebrow">為何選擇我們</span>
+                    <h2 class="features-title">企業採購的智慧選擇</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrap"><span class="feature-icon">🌐</span></div>
+                        <h3>全球供應鏈整合</h3>
+                        <p>連接世界各地優質供應商，一站式採購組件、設備與原物料。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrap"><span class="feature-icon">🛡️</span></div>
+                        <h3>品質保證機制</h3>
+                        <p>每件商品經過嚴格的認證檢測，符合 ISO 及歐盟規範標準。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrap"><span class="feature-icon">⚡</span></div>
+                        <h3>極速交付流程</h3>
+                        <p>從下單到出貨，平均 48 小時內完成處理與配送。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-wrap"><span class="feature-icon">💰</span></div>
+                        <h3>企業專屬價格</h3>
+                        <p>開放量價折扣、VIP 級別定價與專案客製報價感。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Flash Sale -->
+            <section class="flash-sale-section" data-reveal>
+                <div class="flash-sale-container">
+                    <div class="flash-sale-text">
+                        <h2>⚡ 限時閃購 <span class="pulse-dot"></span></h2>
+                        <p>精選熱門商品限時下殺，單筆訂單再享免運</p>
+                    </div>
+                    <div class="flash-sale-countdown" id="flash-sale-countdown">
+                        <div class="timer-block">
+                            <span id="fs-hours" class="timer-num">00</span>
+                            <span class="timer-label">小時</span>
+                        </div>
+                        <span class="timer-colon">:</span>
+                        <div class="timer-block">
+                            <span id="fs-minutes" class="timer-num">00</span>
+                            <span class="timer-label">分鐘</span>
+                        </div>
+                        <span class="timer-colon">:</span>
+                        <div class="timer-block">
+                            <span id="fs-seconds" class="timer-num">00</span>
+                            <span class="timer-label">秒數</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-header" data-reveal>
+                <h2 class="section-title">熱門商品</h2>
+                <div class="search-bar">
+                    <div class="search-input-wrapper">
+                        <input type="text" id="search-input" placeholder="搜尋商品名稱或描述..." oninput="filterProducts()" autocomplete="off">
+                        <div id="search-suggestions" class="search-suggestions"></div>
+                    </div>
+                    <input type="hidden" id="category-filter" value="">
+                    <select id="sort-filter" onchange="filterProducts()">
+                        <option value="default">預設排序</option>
+                        <option value="price-asc">價格：由低到高</option>
+                        <option value="price-desc">價格：由高到低</option>
+                        <option value="name">名稱排序</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Recently Viewed Rail (populated by JS) -->
+            <div id="recently-viewed-rail" style="display:none;"></div>
+
+            <div id="category-pills" class="category-pills" data-reveal></div>
+            <div id="product-grid" class="product-grid" data-reveal>
+                <!-- Skeletons will be rendered here via JS -->
+            </div>
+
+            <section class="testimonials-section" data-reveal>
+                <div class="section-header" style="border:none; margin-bottom:40px; text-align:center; display:block">
+                    <span class="hero-eyebrow">看看客戶如何評價</span>
+                    <h2 class="section-title">值得信賴的夥伴</h2>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">"這是我用過最高效的採購平台。UI 非常流暢，團隊反應速度極快。"</div>
+                        <div class="testimonial-user">
+                            <div class="user-avatar">A</div>
+                            <div class="user-info">
+                                <div class="user-name">Alex Wong</div>
+                                <div class="user-role">Tech Solutions 採購主管</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">"自動化的流程省去了我們 40% 的溝通成本。設計感也是一流的。"</div>
+                        <div class="testimonial-user">
+                            <div class="user-avatar">M</div>
+                            <div class="user-info">
+                                <div class="user-name">Michelle Chen</div>
+                                <div class="user-role">Creative Lead @ Nexus</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">"API 整合非常簡單，庫存管理一目了然。推薦給所有需要快速採購的企業。"</div>
+                        <div class="testimonial-user">
+                            <div class="user-avatar">K</div>
+                            <div class="user-info">
+                                <div class="user-name">Kevin Liu</div>
+                                <div class="user-role">供應鏈分析師</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-section" data-reveal>
+                <div class="section-header" style="border:none; margin-bottom:40px">
+                    <h2 class="section-title">常見問題</h2>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>如何申請大宗採購折扣？</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">當您的單次採購總額超過 $50,000 時，系統會自動套用企業大宗折扣。您也可以聯絡我們的客服經理獲取專屬報價。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>物流配送需要多久？</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">本地配送通常在 1-2 個工作日内送達，國際採購則視地區而定，平均為 3-7 個工作日。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>支援那些支付方式？</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">我們支援主流信用卡、銀行轉帳以及企業採購流程常用的 L/C 與延後付款（視帳戶額度而定）。</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta-banner-section" data-reveal>
+                <div class="cta-banner-content">
+                    <h2>準備好啟動您的企業升級了嗎？</h2>
+                    <p>加入超過 12,000 家企業的選擇，體驗最專業的採購管理系統。</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary btn-lg" onclick="navigate('register')">免費註冊</button>
+                        <button class="btn btn-outline btn-lg" onclick="navigate('products')">探索方案</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Product Detail Page -->
+        <section id="page-product" class="page">
+            <div id="product-detail-content"></div>
+        </section>
+
+        <!-- Cart Page -->
+        <section id="page-cart" class="page">
+            <div class="section-header">
+                <h2 class="section-title">我的清單</h2>
+            </div>
+            <div id="cart-content"></div>
+        </section>
+
+        <!-- Login Page -->
+        <section id="page-login" class="page">
+            <div class="auth-split">
+                <div class="auth-panel-left">
+                    <div class="auth-brand">
+                        <div class="auth-brand-logo">⚡ Premium Sourcing</div>
+                        <h2>探索全球採購<br>新境界</h2>
+                        <p>加入超過 12,000 家企業的選擇，體驗專業採購平台的極致效率。</p>
+                        <div class="auth-trust-list">
+                            <div class="auth-trust-item">✓ 快速免費註冊</div>
+                            <div class="auth-trust-item">✓ 企業級安全防護</div>
+                            <div class="auth-trust-item">✓ 全球供應鏈即時存取</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="auth-panel-right">
+                    <div class="card">
+                        <h2 class="card-title">歡迎回來</h2>
+                        <div id="login-alert"></div>
+                        <form onsubmit="handleLogin(event)">
+                            <div class="form-floating">
+                                <input type="email" id="login-email" required placeholder=" ">
+                                <label>電子郵件</label>
+                            </div>
+                            <div class="form-floating">
+                                <div class="password-wrap" style="position:relative">
+                                    <input type="password" id="login-password" required placeholder=" ">
+                                    <label>密碼</label>
+                                    <button type="button" onclick="togglePassword('login-password')" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1rem; z-index:2">👁️</button>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">立即登入</button>
+                        </form>
+                        <div class="form-footer">
+                            還沒有帳號？ <a onclick="navigate('register')">註冊</a><br>
+                            <a onclick="navigate('forgot-password')" style="font-size: 0.75rem; color: var(--text2)">忘記密碼？</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Register Page -->
+        <section id="page-register" class="page">
+            <div class="auth-split">
+                <div class="auth-panel-left">
+                    <div class="auth-brand">
+                        <div class="auth-brand-logo">⚡ Premium Sourcing</div>
+                        <h2>開啟您的<br>採購旅程</h2>
+                        <p>只需 30 秒即可完成註冊，立即解鎖全球採購服務。</p>
+                        <div class="auth-trust-list">
+                            <div class="auth-trust-item">✓ 首單享 10% 折扣</div>
+                            <div class="auth-trust-item">✓ 免費 VIP 試用 30 天</div>
+                            <div class="auth-trust-item">✓ 專屬客戶經理協助</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="auth-panel-right">
+                    <div class="card">
+                        <h2 class="card-title">建立帳號</h2>
+                        <div id="register-alert"></div>
+                        <form onsubmit="handleRegister(event)">
+                            <div class="form-floating">
+                                <input type="text" id="reg-name" required placeholder=" ">
+                                <label>姓名</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="email" id="reg-email" required placeholder=" ">
+                                <label>電子郵件</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" id="reg-password" required minlength="6" placeholder=" ">
+                                <label>密碼</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">註冊帳號</button>
+                        </form>
+                        <div class="form-footer">
+                            已經有帳號了？ <a onclick="navigate('login')">登入</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forgot Password Page -->
+        <section id="page-forgot-password" class="page">
+            <div class="auth-container">
+                <div class="card">
+                    <h2 class="card-title">重設密碼</h2>
+                    <p style="text-align: center; color: var(--text2); font-size: 0.85rem; margin-bottom: 1.5rem;">輸入您的電子郵件地址，我們將發送重設連結給您。</p>
+                    <div id="forgot-alert"></div>
+                    <form onsubmit="handleForgotPassword(event)">
+                        <div class="form-floating">
+                            <input type="email" id="forgot-email" required placeholder=" ">
+                            <label>電子郵件</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">發送連結</button>
+                    </form>
+                    <div class="form-footer">
+                        <a onclick="navigate('login')">← 返回登入</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Page -->
+        <section id="page-dashboard" class="page">
+            <div class="section-header">
+                <h2 class="section-title">帳戶概覽</h2>
+                <button class="btn btn-outline btn-sm" onclick="logout()">用戶登出</button>
+            </div>
+            <div id="dashboard-content"></div>
+        </section>
+
+        <!-- Admin Page -->
+        <section id="page-admin" class="page">
+            <div class="section-header">
+                <h2 class="section-title">管理後台</h2>
+            </div>
+            
+            <div id="admin-stats" class="stats-grid"></div>
+
+            <div class="admin-layout">
+                <aside class="admin-sidebar" data-reveal>
+                    <div class="admin-tabs">
+                        <button class="admin-tab active" onclick="switchAdminTab('products')">📦 商品管理</button>
+                        <button class="admin-tab" onclick="switchAdminTab('orders')">📜 訂單處理</button>
+                        <button class="admin-tab" onclick="switchAdminTab('users')">👥 用戶列表</button>
+                        <button class="admin-tab" onclick="switchAdminTab('coupons')">🎟️ 優惠活動</button>
+                        <button class="admin-tab" onclick="switchAdminTab('log')">📋 系統日誌</button>
+                    </div>
+                </aside>
+
+                <main class="admin-main">
+                    <div class="admin-analytics" data-reveal>
+                        <div class="chart-container">
+                            <h3 style="margin-bottom: 20px; font-size: 1.1rem;">營收趨勢</h3>
+                            <div id="admin-revenue-chart" class="chart-bars">
+                                <!-- Bars via JS -->
+                            </div>
+                        </div>
+                        <div class="admin-recent">
+                            <h3 style="margin-bottom: 16px; font-size: 1.1rem;">最近活動</h3>
+                            <div id="admin-recent-activity" style="display:flex; flex-direction:column; gap:12px;">
+                                <!-- Alerts via JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="admin-products" class="admin-section active">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+                            <h3 style="font-size:1.25rem">所有商品</h3>
+                            <button class="btn btn-primary btn-sm" onclick="openProductModal()">+ 新增商品</button>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr><th>ID</th><th>圖片</th><th>名稱</th><th>類別</th><th>價格</th><th>庫存</th><th>操作</th></tr>
+                                </thead>
+                                <tbody id="admin-products-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div id="admin-orders" class="admin-section">
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr><th>訂單號碼</th><th>客戶</th><th>內容</th><th>金額</th><th>狀態</th><th>日期</th></tr>
+                                </thead>
+                                <tbody id="admin-orders-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="admin-users" class="admin-section">
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr><th>ID</th><th>姓名</th><th>Email</th><th>角色</th><th>註冊日期</th></tr>
+                                </thead>
+                                <tbody id="admin-users-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="admin-coupons" class="admin-section">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+                            <h3 style="font-size:1.25rem">優惠活動</h3>
+                            <button class="btn btn-primary btn-sm" onclick="openCouponModal()">+ 建立優惠碼</button>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr><th>ID</th><th>Code</th><th>折扣</th><th>截止日</th><th>建立日</th><th>狀態</th><th>操作</th></tr>
+                                </thead>
+                                <tbody id="admin-coupons-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="admin-log" class="admin-section">
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr><th>時間</th><th>管理員</th><th>操作</th><th>詳情</th></tr>
+                                </thead>
+                                <tbody id="admin-log-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </section>
+
+        <!-- Extra Pages -->
+        <section id="page-privacy" class="page">
+            <div class="policy-container">
+                <h1>隱私權政策</h1>
+                <p class="text-muted">最後更新日期：2024年3月</p>
+                <div class="divider"></div>
+                <h2>數據搜集</h2>
+                <p>我們僅收集處理您的訂單和提供服務所必需的資訊，例如您的電子郵件、姓名和公司詳情。</p>
+                <h2>數據保護</h2>
+                <p>您的所有個人資料均通過加密傳輸並安全儲存。我們絕不向第三方出售您的數據。</p>
+                <button class="btn btn-secondary mt-2" onclick="navigate('products')">返回首頁</button>
+            </div>
+        </section>
+
+        <section id="page-terms" class="page">
+            <div class="policy-container">
+                <h1>服務條款</h1>
+                <p class="text-muted">最後更新日期：2024年3月</p>
+                <div class="divider"></div>
+                <h2>採購規範</h2>
+                <p>所有在本平台進行的採購行為均受相關法律法規約束。您需保證提供的所有資訊真實有效。</p>
+                <h2>智慧財產權</h2>
+                <p>本平台上的所有內容，包括商標、標誌、文字和圖像，均受版權法保護。</p>
+                <button class="btn btn-secondary mt-2" onclick="navigate('products')">返回首頁</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <!-- Brand Column -->
+            <div class="footer-brand-col">
+                <div class="footer-logo">⚡ Premium Sourcing</div>
+                <p class="footer-tagline">企業採購的智慧夥伴，連結全球供應鏈。</p>
+                <div class="footer-socials">
+                    <a class="social-btn" href="#" aria-label="Twitter/X" title="X (Twitter)">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a class="social-btn" href="#" aria-label="LinkedIn" title="LinkedIn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a class="social-btn" href="#" aria-label="Facebook" title="Facebook">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <!-- Links Column 1 -->
+            <div class="footer-links-col">
+                <h4 class="footer-col-title">平台服務</h4>
+                <a class="footer-link" onclick="navigate('products')">所有商品</a>
+                <a class="footer-link" onclick="navigate('dashboard')">我的訂單</a>
+                <a class="footer-link" onclick="navigate('cart')">採購清單</a>
+                <a class="footer-link" onclick="navigate('register')">建立帳號</a>
+            </div>
+            <!-- Links Column 2 -->
+            <div class="footer-links-col">
+                <h4 class="footer-col-title">法律資訊</h4>
+                <a class="footer-link" onclick="navigate('privacy')">隱私權條款</a>
+                <a class="footer-link" onclick="navigate('terms')">服務協議</a>
+            </div>
+            <!-- Newsletter Column -->
+            <div class="footer-newsletter-col">
+                <h4 class="footer-col-title">訂閱最新動態</h4>
+                <p class="footer-newsletter-desc">獲取獨家折扣與產業趨勢分析。</p>
+                <form class="footer-newsletter-form" onsubmit="subscribeNewsletter(event)">
+                    <input type="email" placeholder="您的電子郵件" required>
+                    <button type="submit" class="btn btn-primary btn-sm">訂閱</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Premium Sourcing Platform. Powered by Antigravity.</p>
+            <div class="footer-bottom-badges">
+                <span class="footer-badge">🔒 SSL 加密</span>
+                <span class="footer-badge">🛡️ 資料保護</span>
+                <span class="footer-badge">⚡ 99.9% 在線率</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toasts container -->
+    <div id="toast"></div>
+
+    <!-- Cart Drawer -->
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-drawer-header">
+            <h2 style="font-size: 1.25rem;">採購清單 <span id="cart-drawer-count" style="font-weight: 400; color: var(--text-muted); font-size: 0.9rem;">(0)</span></h2>
+            <button class="btn btn-sm btn-outline" style="padding: 4px 8px; border-radius: 8px;" onclick="closeCartDrawer()">✕ 關閉</button>
+        </div>
+        <div id="cart-drawer-content" class="cart-drawer-content">
+            <!-- Content via JS -->
+        </div>
+    </div>
+    <div id="cart-overlay" class="drawer-overlay" onclick="closeCartDrawer()"></div>
+
+    <!-- Modal Modal -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-title" class="modal-title">標題</h3>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Back to top -->
+    <button id="back-to-top" title="回到頂部">↑</button>
+
+    <!-- Dark mode switch -->
+    <button id="dark-toggle" onclick="toggleDarkMode()" title="切換深色/淺色模式">🌙</button>
+
+    <!-- Floating Support -->
+    <div class="floating-support" onclick="showToast('正在連接在線客服...')">💬</div>
+
+    <!-- External JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
